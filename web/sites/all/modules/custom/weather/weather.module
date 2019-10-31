@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * implement hook_menu()
+ */
+function weather_menu()
+{
+  $items=array();
+  $items ['weather'] = array(
+    'title' => 'the weather of a done location',
+    'description' => 'configure module weather',
+    'page callback' => 'weather_from_API_page',
+    'access callback' => true,
+    'page arguments' => array(1)
+  );
+
+  return $items;
+}
+
+function weather_from_API_page ($city=null,$country=null)
+{
+   $output = file_get_contents('https://api.openweathermap.org/data/2.5/weather?q='.$city.','.$country.'&appid=98cc78a4f69293ab05786dabf8e80d01');
+   $data =  json_decode($output);
+   $result = '<p> la météo pour '.$data->name.': <strong>'.$data->weather[0]->main.'</strong></p>';
+   return $result;
+}
+
+function weather_from_API ($delta)
+{
+ /* $output = file_get_contents('https://api.openweathermap.org/data/2.5/weather?q='.$city.','.$country.'&appid=98cc78a4f69293ab05786dabf8e80d01');
+  $data =  json_decode($output);
+  $result = '<p> la météo pour'.$data->name.':'.$data->weather[0]->main.'</p>';
+  return $result;*/
+
+ switch ($delta)
+ {
+   case'weather':
+     $city = variable_get('weather_city');
+     $output = file_get_contents('https://api.openweathermap.org/data/2.5/weather?q='.$city.'&appid=98cc78a4f69293ab05786dabf8e80d01');
+     $data =  json_decode($output);
+     //var_dump($data);
+     $result = '<div><p> The weather from '.$data->name.' is '.$data->weather[0]->description.'</p></div>';
+     return $result;
+
+ }
+}
+
+
+function weather_block_info()
+{
+  $block = array();
+  $block['weather'] = array(
+      'info' => t('weather block'),
+      'cache' => DRUPAL_NO_CACHE,
+      'status' => true,
+      'region'=>'sidebar_first'
+    );
+  return $block;
+}
+
+/**
+ * Implements hook_block_configure()
+ */
+function weather_block_configure($delta)
+{
+  $form = array();
+  switch($delta)
+  {
+    case 'weather':
+      $form['weather_city']=array(
+        '#type' => 'textfield',
+        '#title'=> t('which city?'),
+        '#default_value' => variable_get('weather_city', 'Paris,fr'),
+      );
+      break;
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save()
+ */
+function weather_block_save($delta='', $edit=array())
+{
+  switch($delta)
+  {
+    case 'weather':
+      variable_set('weather_city', (string)$edit['weather_city']);
+      break;
+  }
+  return;
+}
+
+
+
+/**
+ * implements of hook_block_view
+ */
+function weather_block_view($delta='')
+{
+  switch ($delta)
+  {
+    case 'weather':
+      $block['subject'] = t('what is the weather like?');
+      $block['content'] = weather_from_API($delta) ;
+      return $block;
+      break;
+  }
+
+}
+
+
+

@@ -1,0 +1,177 @@
+@import "helper";
+
+body
+{
+  font-family: $fontBody;
+}
+
+.container
+{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+/*************************************************************
+                      HEADER
+ ***********************************************************/
+
+.header
+{
+  background-color: $mainColor;
+  color:white;
+  border-bottom: 2px solid red;
+
+  .flex-header
+  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-slogan-name
+  {
+    display: flex;
+    align-items: center;
+
+    .header__name-and-slogan
+    {
+      .header__site-name
+      {
+        margin-bottom: 0;
+        font-size: 1.5em;
+        text-transform: uppercase;
+      }
+      .header__site-slogan
+      {
+        font-size: 1em;
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  a
+  {
+    text-decoration: none;
+    color:white;
+  }
+
+  .header__logo-image
+  {
+    width: 3vw;
+    margin-right: 0.5em
+  ;
+  }
+
+  #block-system-main-menu
+  {
+    h2.block__title
+    {
+      display: none;
+    }
+  }
+
+  .menu
+  {
+    display:flex;
+    list-style: none;
+
+    .menu__item
+    {
+      margin:0 1em;
+    }
+  }
+}
+
+
+/************************************************************************
+                            MAIN
+ ********************************************************************/
+
+.main
+{
+
+  /********************** HIGHLIGHT  *********************************/
+  .highlight
+  {
+    background-image:url("images/Calque6.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    .region-highlighted
+    {
+      display: flex;
+      justify-content: space-around;
+
+      .block{
+        padding-top:25em;
+        color:white;
+
+        p
+        {
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+
+
+  /************************** HELP************************************/
+  .help
+  {
+
+    .region-help
+    {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .block{
+        p
+        {
+          color: $mainColor;
+        }
+
+      }
+      #block-block-4
+      {
+        p::before
+        {
+          font-family: 'Font Awesome 5 Free';
+          content: "\f095";
+          font-weight: 900;
+          font-size: 2em;
+        }
+      }
+      #block-block-5
+      {
+        p::before
+        {
+          font-family: 'Font Awesome 5 Free';
+          content: "\f3c5";
+          font-weight: 900;
+          font-size: 2em;
+          
+        }
+      }
+
+    }
+  }
+
+  /******************* CONTENT ***************************************/
+  .content
+  {
+
+    #block-views-nos-m-tiers-block
+    {
+
+      .view-nos-m-tiers
+      {
+        .view-content
+        {
+          display: flex;
+          justify-content: space-around;
+        }
+      }
+    }
+  }
+}

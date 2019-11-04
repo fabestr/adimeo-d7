@@ -12,27 +12,31 @@
 
   <header class="header" role="banner">
 
-    <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="header__logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /></a>
-    <?php endif; ?>
-
-    <?php if ($site_name || $site_slogan): ?>
-      <div class="header__name-and-slogan">
-        <?php if ($site_name): ?>
-          <h1 class="header__site-name">
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
-          </h1>
+    <div class="container flex-header">
+      <div class="header-slogan-name">
+        <?php if ($logo): ?>
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="header__logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /></a>
         <?php endif; ?>
 
-        <?php if ($site_slogan): ?>
-          <div class="header__site-slogan"><?php print $site_slogan; ?></div>
+        <?php if ($site_name || $site_slogan): ?>
+          <div class="header__name-and-slogan">
+            <?php if ($site_name): ?>
+              <h1 class="header__site-name">
+                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
+              </h1>
+            <?php endif; ?>
+
+            <?php if ($site_slogan): ?>
+              <div class="header__site-slogan"><?php print $site_slogan; ?></div>
+            <?php endif; ?>
+          </div>
         <?php endif; ?>
       </div>
-    <?php endif; ?>
 
-    <?php if ($secondary_menu): ?>
+
+      <?php /*if ($secondary_menu): */?><!--
       <nav class="header__secondary-menu" role="navigation">
-        <?php print theme('links__system_secondary_menu', array(
+        <?php /*print theme('links__system_secondary_menu', array(
           'links' => $secondary_menu,
           'attributes' => array(
             'class' => array('links', 'inline', 'clearfix'),
@@ -42,11 +46,13 @@
             'level' => 'h2',
             'class' => array('visually-hidden'),
           ),
-        )); ?>
+        )); */?>
       </nav>
-    <?php endif; ?>
+    --><?php /*endif; */?>
 
-    <?php print render($page['header']); ?>
+      <?php print render($page['header']); ?>
+
+    </div>
 
   </header>
 
@@ -72,28 +78,48 @@
       endif;
     ?>
 
-    <main class="<?php print $content_class; ?>" role="main">
-      <?php print render($page['highlighted']); ?>
+    <main class="<?php print $content_class; ?> main" role="main">
+      <?php if($page['highlighted']): ?>
+      <div class="highlight">
+        <div class="container">
+          <?php print render($page['highlighted']); ?>
+        </div>
+      </div>
+      <?php endif; ?>
       <?php print $breadcrumb; ?>
-      <a href="#skip-link" class="visually-hidden visually-hidden--focusable" id="main-content">Back to top</a>
+      <!--<a href="#skip-link" class="visually-hidden visually-hidden--focusable" id="main-content">Back to top</a>-->
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
-<!--        <h1><?php /*print $title; */?></h1>
--->      <?php endif; ?>
+        <!--<h1><?php /*print $title; */?></h1>-->
+      <?php endif; ?>
       <?php print render($title_suffix); ?>
-      <?php print $messages; ?>
-<!--      --><?php /*print render($tabs); */?>
-      <?php print render($page['help']); ?>
+      <?php /*print $messages; */?>
+<!--      --><?php print render($tabs);?>
+      <?php if($page['help']): ?>
+      <div class="help">
+        <div class="container">
+          <?php print render($page['help']); ?>
+        </div>
+      </div>
+      <?php endif; ?>
+
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
-<!--      --><?php /*print render($page['content']); */?>
+      <?php if($page['content']): ?>
+        <div class="content">
+          <div class="container">
+            <?php print render($page['content']); ?>
+          </div>
+        </div>
+      <?php endif; ?>
+
       <?php print $feed_icons; ?>
     </main>
 
     <div class="layout-swap__top layout-3col__full">
 
-      <a href="#skip-link" class="visually-hidden visually-hidden--focusable" id="main-menu" tabindex="-1">Back to top</a>
+      <!--<a href="#skip-link" class="visually-hidden visually-hidden--focusable" id="main-menu" tabindex="-1">Back to top</a>-->
 
       <?php if ($main_menu): ?>
         <nav class="main-menu" role="navigation">
@@ -120,11 +146,11 @@
 
     </div>
 
-   <!-- <?php /*if ($sidebar_first): */?>
-      <aside class="<?php /*print $sidebar_first_class; */?>" role="complementary">
-        <?php /*print $sidebar_first; */?>
+   <!-- <?php if ($sidebar_first): ?>
+      <aside class="<?php print $sidebar_first_class; ?>" role="complementary">
+        <?php print $sidebar_first; ?>
       </aside>
-    --><?php /*endif; */?>
+    --><?php endif; ?>
 
     <?php if ($sidebar_second): ?>
       <aside class="<?php print $sidebar_second_class; ?>" role="complementary">

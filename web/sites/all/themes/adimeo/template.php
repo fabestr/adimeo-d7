@@ -45,7 +45,10 @@ function STARTERKIT_preprocess_html(&$variables, $hook) {
   );
 }
 // */
-
+function adimeo_preprocess_html(&$variables) {
+  drupal_add_css("https://use.fontawesome.com/releases/v5.8.1/css/all.css", array('type' => 'external'));
+  drupal_add_js('https://kit.fontawesome.com/508727396b.js', array('type' => 'external'));
+}
 /**
  * Override or insert variables into the page templates.
  *

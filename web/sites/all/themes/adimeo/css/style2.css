@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/*************************************************************
+                      HEADER
+ ***********************************************************/
+.header {
+  background-color: #074581;
+  color: white;
+  border-bottom: 2px solid red;
+}
+.header .flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .header-slogan-name {
+  display: flex;
+  align-items: center;
+}
+.header .header-slogan-name .header__name-and-slogan .header__site-name {
+  margin-bottom: 0;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+.header .header-slogan-name .header__name-and-slogan .header__site-slogan {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+.header a {
+  text-decoration: none;
+  color: white;
+}
+.header .header__logo-image {
+  width: 3vw;
+  margin-right: 0.5em;
+}
+.header #block-system-main-menu h2.block__title {
+  display: none;
+}
+.header .menu {
+  display: flex;
+  list-style: none;
+}
+.header .menu .menu__item {
+  margin: 0 1em;
+}
+
+/************************************************************************
+                            MAIN
+ ********************************************************************/
+.main {
+  /********************** HIGHLIGHT  *********************************/
+  /************************** HELP************************************/
+  /******************* CONTENT ***************************************/
+}
+.main .highlight {
+  background-image: url("images/Calque6.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.main .highlight .region-highlighted {
+  display: flex;
+  justify-content: space-around;
+}
+.main .highlight .region-highlighted .block {
+  padding-top: 25em;
+  color: white;
+}
+.main .highlight .region-highlighted .block p {
+  font-size: 1.5em;
+}
+.main .help .region-help {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.main .help .region-help .block p {
+  color: #074581;
+}
+.main .help .region-help #block-block-4 p::before {
+  font-family: "Font Awesome 5 Free";
+  content: "";
+  font-weight: 900;
+  font-size: 2em;
+}
+.main .help .region-help #block-block-5 p::before {
+  font-family: "Font Awesome 5 Free";
+  content: "";
+  font-weight: 900;
+  font-size: 2em;
+}
+.main .content #block-views-nos-m-tiers-block .view-nos-m-tiers .view-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*# sourceMappingURL=style2.css.map */

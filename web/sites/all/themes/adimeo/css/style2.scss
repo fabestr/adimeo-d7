@@ -91,6 +91,11 @@ body
 .main
 {
 
+  h2
+  {
+
+  }
+
   /********************** HIGHLIGHT  *********************************/
   .highlight
   {
@@ -144,13 +149,23 @@ body
       }
       #block-block-5
       {
-        p::before
+        .first
+        {
+          margin-bottom: 0;
+          margin-left: 2.5em;
+        }
+
+        p:last-child
+        {
+          margin-top: 0;
+        }
+        p+p::before
         {
           font-family: 'Font Awesome 5 Free';
           content: "\f3c5";
           font-weight: 900;
           font-size: 2em;
-          
+          padding-right: 0.5em;
         }
       }
 

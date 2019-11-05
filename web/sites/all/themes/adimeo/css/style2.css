@@ -92,11 +92,19 @@ body {
   font-weight: 900;
   font-size: 2em;
 }
-.main .help .region-help #block-block-5 p::before {
+.main .help .region-help #block-block-5 .first {
+  margin-bottom: 0;
+  margin-left: 2.5em;
+}
+.main .help .region-help #block-block-5 p:last-child {
+  margin-top: 0;
+}
+.main .help .region-help #block-block-5 p + p::before {
   font-family: "Font Awesome 5 Free";
   content: "";
   font-weight: 900;
   font-size: 2em;
+  padding-right: 0.5em;
 }
 .main .content #block-views-nos-m-tiers-block .view-nos-m-tiers .view-content {
   display: flex;
